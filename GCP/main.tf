@@ -54,7 +54,7 @@ variable "node_count" {
 ##################################################################################
 
 resource "google_compute_firewall" "allow_http" {
-  name    = "aj-iacm-allow-http"
+  name    = "rss-iacm-allow-http"
   network = "default"
 
   allow {
@@ -67,7 +67,7 @@ resource "google_compute_firewall" "allow_http" {
 }
 
 resource "google_compute_firewall" "allow_https" {
-  name    = "aj-iacm-allow-https"
+  name    = "rss-iacm-allow-https"
   network = "default"
 
   allow {
@@ -80,7 +80,7 @@ resource "google_compute_firewall" "allow_https" {
 }
 
 resource "google_compute_firewall" "allow_ssh" {
-  name    = "aj-iacm-allow-ssh"
+  name    = "rss-iacm-allow-ssh"
   network = "default"
 
   allow {
@@ -93,7 +93,7 @@ resource "google_compute_firewall" "allow_ssh" {
 }
 
 resource "google_compute_firewall" "allow_custom_4440" {
-  name    = "aj-iacm-allow-4440"
+  name    = "rss-iacm-allow-4440"
   network = "default"
 
   allow {
@@ -113,7 +113,7 @@ resource "google_compute_firewall" "allow_custom_4440" {
 
 resource "google_compute_instance" "web_server" {
   count        = 1
-  name         = "aj-iacm-instance-${count.index}"
+  name         = "rss-iacm-instance-${count.index}"
   machine_type = "e2-micro"
   zone         = "${var.gcp_region}-c"
   
