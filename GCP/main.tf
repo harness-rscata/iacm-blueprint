@@ -162,3 +162,8 @@ output "instance_private_ips" {
   description = "The private IP addresses of the created instances."
   value       = google_compute_instance.web_server[*].network_interface[0].network_ip
 }
+
+output "instance_ip" {
+  value = google_compute_instance.example.network_interface[0].access_config[0].nat_ip
+}
+
