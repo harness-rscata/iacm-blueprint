@@ -48,64 +48,6 @@ variable "node_count" {
 }
 
 ##################################################################################
-# Firewall Rules
-#
-# Creates firewall rules to allow common internet access patterns
-##################################################################################
-
-resource "google_compute_firewall" "allow_http" {
-  name    = "rss-iacm-allow-http"
-  network = "default"
-
-  allow {
-    protocol = "tcp"
-    ports    = ["80"]
-  }
-
-  source_ranges = ["0.0.0.0/0"]
-  target_tags   = ["http-server"]
-}
-
-resource "google_compute_firewall" "allow_https" {
-  name    = "rss-iacm-allow-https"
-  network = "default"
-
-  allow {
-    protocol = "tcp"
-    ports    = ["443"]
-  }
-
-  source_ranges = ["0.0.0.0/0"]
-  target_tags   = ["https-server"]
-}
-
-resource "google_compute_firewall" "allow_ssh" {
-  name    = "rss-iacm-allow-ssh"
-  network = "default"
-
-  allow {
-    protocol = "tcp"
-    ports    = ["22"]
-  }
-
-  source_ranges = ["0.0.0.0/0"]
-  target_tags   = ["ssh-server"]
-}
-
-resource "google_compute_firewall" "allow_custom_4440" {
-  name    = "rss-iacm-allow-4440"
-  network = "default"
-
-  allow {
-    protocol = "tcp"
-    ports    = ["4440"]
-  }
-
-  source_ranges = ["0.0.0.0/0"]
-  target_tags   = ["custom-4440"]
-}
-
-##################################################################################
 # Resource: Google Compute Instance
 #
 # Provisions e2-standard-2 virtual machine with internet access.
